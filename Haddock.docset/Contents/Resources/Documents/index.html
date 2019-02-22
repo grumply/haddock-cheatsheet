@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Haddock Markup Cheatsheet</title>
+<link href='style.css' rel='stylesheet'>
+<link href='//dash_ref/Category/Top-Level Documentation/1'>
+<link href='//dash_ref_Top-Level Documentation/Entry/Documenting Functions/0'>
+<link href='//dash_ref_Top-Level Documentation/Entry/Documenting Function Arguments/0'>
+<link href='//dash_ref_Top-Level Documentation/Entry/Documenting Classes/0'>
+<link href='//dash_ref_Top-Level Documentation/Entry/Documenting Class Functions/0'>
+<link href='//dash_ref_Top-Level Documentation/Entry/Documenting Types/0'>
+<link href='//dash_ref_Top-Level Documentation/Entry/Documenting Data Constructors/0'>
+<link href='//dash_ref_Top-Level Documentation/Entry/Documenting Record Fields/0'>
+<link href='//dash_ref/Category/Export Markup/1'>
+<link href='//dash_ref_Export Markup/Entry/Code Sections and Sub-sections/0'>
+<link href='//dash_ref/Category/Headings/1'>
+<link href='//dash_ref_Headings/Entry/Headings and Sub-headings in Documentation/0'>
+<link href='//dash_ref_Headings/Entry/Callapsible Header Sections/0'>
+<link href='//dash_ref/Category/References/1'>
+<link href='//dash_ref_References/Entry/Named Documentation Chunks/0'>
+<link href='//dash_ref_References/Entry/Anchors/0'>
+<link href='//dash_ref/Category/Code Blocks/1'>
+<link href='//dash_ref_Code Blocks/Entry/Syntax Highlighted Code Blocks/0'>
+<link href='//dash_ref/Category/REPL Examples/1'>
+<link href='//dash_ref_REPL Examples/Entry/Evaluated Output Examples/0'>
+<link href='//dash_ref/Category/Properties/1'>
+<link href='//dash_ref_Properties/Entry/Testable Properties/0'>
+<link href='//dash_ref/Category/Hyperlinking/1'>
+<link href='//dash_ref_Hyperlinking/Entry/Module, Function, and Type Hyperlinks/0'>
+<link href='//dash_ref/Category/Text Markup/1'>
+<link href='//dash_ref_Text Markup/Entry/Emphasis/0'>
+<link href='//dash_ref_Text Markup/Entry/Bolding/0'>
+<link href='//dash_ref_Text Markup/Entry/Monospacing/0'>
+<link href='//dash_ref/Category/External References/1'>
+<link href='//dash_ref_External References/Entry/Links/0'>
+<link href='//dash_ref_External References/Entry/Images/0'>
+<link href='//dash_ref/Category/Lists/1'>
+<link href='//dash_ref_Lists/Entry/Unordered Lists/0'>
+<link href='//dash_ref_Lists/Entry/Ordered Lists/0'>
+<link href='//dash_ref_Lists/Entry/Definition Lists/0'>
+<link href='//dash_ref_Lists/Entry/Advanced Nesting of Lists/0'>
+<link href='//dash_ref/Category/Custom Math and LaTeX/1'>
+<link href='//dash_ref_Custom Math and LaTeX/Entry/LaTeX with MathJax/0'>
+<link href='//dash_ref/Category/Metadata/1'>
+<link href='//dash_ref_Metadata/Entry/Since/0'>
+<link href='//dash_ref/Category/Grids and Tables/1'>
+<link href='//dash_ref_Grids and Tables/Entry/Layout/0'>
+<link href='//dash_ref/Category/Configuration/1'>
+<link href='//dash_ref_Configuration/Entry/Local Haddock Options/0'>
+</head>
+<body>
+<header>
+<h1>Haddock Markup Cheatsheet</h1>
+</header>
+<article>
+<p><p>Haddock Markup Quick Reference</p>
+</p>
+<section class='category'>
+<h2 id='//dash_ref/Category/Top-Level Documentation/1'>
+Top-Level Documentation
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Top-Level Documentation/Entry/Documenting Functions/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Documenting Functions</p>
+</div>
+<div class='notes'><p>Function documentation is supported in single- and multi-line formats by starting a comment with <code>|</code>.</p>
+
+<p>Single-line:</p>
+<pre class="highlight haskell"><span class="cd">-- |The 'square' function squares an integer.</span>&#x000A;<span class="n">square</span> <span class="o">::</span> <span class="kt">Integer</span> <span class="o">-&gt;</span> <span class="kt">Integer</span>&#x000A;<span class="n">square</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span></pre>
+<p>Multi-line:</p>
+<pre class="highlight haskell"><span class="cm">{-|&#x000A;&#x000A;  The 'square' function squares an integer.&#x000A;&#x000A;  &gt;&gt;&gt; square 3&#x000A;  9&#x000A;&#x000A;-}</span></pre>
+<p>Documentation after type signature:</p>
+<pre class="highlight haskell"><span class="n">square</span> <span class="o">::</span> <span class="kt">Integer</span> <span class="o">-&gt;</span> <span class="kt">Integer</span>&#x000A;<span class="c1">-- ^The `square` function squares an integer.</span>&#x000A;<span class="n">square</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Top-Level Documentation/Entry/Documenting Function Arguments/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Documenting Function Arguments</p>
+</div>
+<div class='notes'><p>Individual function arguments may be documented.</p>
+<pre class="highlight haskell"><span class="n">f</span>  <span class="o">::</span> <span class="kt">Int</span>      <span class="c1">-- ^ The 'Int' argument</span>&#x000A;   <span class="o">-&gt;</span> <span class="kt">Float</span>    <span class="c1">-- ^ The 'Float' argument</span>&#x000A;   <span class="o">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>    <span class="c1">-- ^ The return value</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Top-Level Documentation/Entry/Documenting Classes/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Documenting Classes</p>
+</div>
+<div class='notes'><p>Class documentation, same syntax as function documentation.</p>
+<pre class="highlight haskell"><span class="cd">-- |'C' class documentation....</span>&#x000A;<span class="kr">class</span> <span class="kt">C</span> <span class="n">a</span> <span class="kr">where</span>&#x000A;  <span class="n">f</span> <span class="o">::</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Int</span>&#x000A;  <span class="n">g</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="n">a</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Top-Level Documentation/Entry/Documenting Class Functions/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Documenting Class Functions</p>
+</div>
+<div class='notes'><p>Class functions can be documented.</p>
+<pre class="highlight haskell"><span class="kr">class</span> <span class="kt">C</span> <span class="n">a</span> <span class="kr">where</span>&#x000A;  <span class="c1">-- | This is the documentation for the 'f' method</span>&#x000A;  <span class="n">f</span> <span class="o">::</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Int</span>&#x000A;  <span class="c1">-- | This is the documentation for the 'g' method</span>&#x000A;  <span class="n">g</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="n">a</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Top-Level Documentation/Entry/Documenting Types/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Documenting Types</p>
+</div>
+<div class='notes'><p>Document individual types, same syntax as function documentation.</p>
+<pre class="highlight haskell"><span class="cd">-- |'MyList' type documentation....</span>&#x000A;<span class="kr">data</span> <span class="kt">MyList</span> <span class="n">a</span> <span class="o">=</span> <span class="kt">Nil</span> <span class="o">|</span> <span class="kt">Cons</span> <span class="n">a</span> <span class="kt">MyList</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Top-Level Documentation/Entry/Documenting Data Constructors/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Documenting Data Constructors</p>
+</div>
+<div class='notes'><p>Individual constructors can be documented.</p>
+
+<p>Prefix-style:</p>
+<pre class="highlight haskell"><span class="kr">data</span> <span class="kt">T</span> <span class="n">a</span> <span class="n">b</span>&#x000A;  <span class="c1">-- | This is the documentation for the 'C1' constructor</span>&#x000A;  <span class="o">=</span> <span class="kt">C1</span> <span class="n">a</span> <span class="n">b</span>&#x000A;  <span class="c1">-- | This is the documentation for the 'C2' constructor</span>&#x000A;  <span class="o">|</span> <span class="kt">C2</span> <span class="n">a</span> <span class="n">b</span></pre>
+<p>Inline-style:</p>
+<pre class="highlight haskell"><span class="kr">data</span> <span class="kt">T</span> <span class="n">a</span> <span class="n">b</span>&#x000A;  <span class="o">=</span> <span class="kt">C1</span> <span class="n">a</span> <span class="n">b</span>  <span class="c1">-- ^ This is the documentation for the 'C1' constructor</span>&#x000A;  <span class="o">|</span> <span class="kt">C2</span> <span class="n">a</span> <span class="n">b</span>  <span class="c1">-- ^ This is the documentation for the 'C2' constructor</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Top-Level Documentation/Entry/Documenting Record Fields/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Documenting Record Fields</p>
+</div>
+<div class='notes'><p>Each record field can be documented. </p>
+
+<p>Prefix-style:</p>
+<pre class="highlight haskell"><span class="kr">data</span> <span class="kt">R</span> <span class="n">a</span> <span class="n">b</span> <span class="o">=</span>&#x000A;  <span class="kt">R</span> <span class="p">{</span> <span class="c1">-- | This is the documentation for the 'a' field</span>&#x000A;      <span class="n">a</span> <span class="o">::</span> <span class="n">a</span><span class="p">,</span>&#x000A;      <span class="c1">-- | This is the documentation for the 'b' field</span>&#x000A;      <span class="n">b</span> <span class="o">::</span> <span class="n">b</span>&#x000A;    <span class="p">}</span></pre>
+<p>Inline-style:</p>
+<pre class="highlight haskell"><span class="kr">data</span> <span class="kt">R</span> <span class="n">a</span> <span class="n">b</span> <span class="o">=</span>&#x000A;  <span class="kt">R</span> <span class="p">{</span> <span class="n">a</span> <span class="o">::</span> <span class="n">a</span>  <span class="c1">-- ^ This is the documentation for the 'a' field</span>&#x000A;    <span class="p">,</span> <span class="n">b</span> <span class="o">::</span> <span class="n">b</span>  <span class="c1">-- ^ This is the documentation for the 'b' field</span>&#x000A;    <span class="p">}</span></pre>
+<p>Note that documentation for the first occurence of a field is used for all other occurences of the field.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Export Markup/1'>
+Export Markup
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Export Markup/Entry/Code Sections and Sub-sections/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Code Sections and Sub-sections</p>
+</div>
+<div class='notes'><p>Control rendered layout by marking sections in the export list.</p>
+
+<p>Create nestable sections with:</p>
+<pre class="highlight haskell"><span class="c1">-- *</span>&#x000A;<span class="c1">-- **</span>&#x000A;<span class="c1">-- ***</span>&#x000A;<span class="c1">-- etc...</span></pre><pre class="highlight haskell"><span class="kr">module</span> <span class="nn">M</span> &#x000A;  <span class="p">(</span> <span class="c1">-- * Types</span>&#x000A;    <span class="kt">MyType</span><span class="p">()</span>&#x000A;  <span class="p">,</span> <span class="kt">MyOtherType</span><span class="p">(</span><span class="o">..</span><span class="p">)</span>&#x000A;    <span class="c1">-- ** Smart Constructors</span>&#x000A;  <span class="p">,</span> <span class="nf">mkMyType</span>&#x000A;    <span class="c1">-- ** Validators</span>&#x000A;  <span class="p">,</span> <span class="nf">validateMyOtherType</span>&#x000A;    <span class="c1">-- * Re-Exports</span>&#x000A;  <span class="p">,</span> <span class="nf">module</span> <span class="kt">Control</span><span class="o">.</span><span class="kt">Applicative</span>&#x000A;    <span class="c1">-- | Some documentation not attached to a particular Haskell entity</span>&#x000A;  <span class="p">)</span> <span class="kr">where</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Headings/1'>
+Headings
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Headings/Entry/Headings and Sub-headings in Documentation/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Headings and Sub-headings in Documentation</p>
+</div>
+<div class='notes'><p>Add headings within documentation blocks.</p>
+
+<p>Heading-level control with:</p>
+<pre class="highlight haskell"><span class="c1">-- =</span>&#x000A;<span class="c1">-- ==</span>&#x000A;<span class="c1">-- ===</span>&#x000A;<span class="c1">-- etc...</span></pre><pre class="highlight haskell"><span class="cd">-- | 'MyType' represents ....</span>&#x000A;<span class="c1">-- </span>&#x000A;<span class="c1">-- = Heading Section</span>&#x000A;<span class="c1">-- ...</span>&#x000A;<span class="c1">-- </span>&#x000A;<span class="c1">-- == Subheading Section</span>&#x000A;<span class="c1">--</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Headings/Entry/Callapsible Header Sections/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Callapsible Header Sections</p>
+</div>
+<div class='notes'><p>Since 2.15.1, haddock has experimental support for collapsible headers.</p>
+
+<p>Wrap your header in underscores to make it collapsible:</p>
+<pre class="highlight haskell"><span class="c1">-- === __Examples__</span>&#x000A;<span class="c1">-- Text that can be hidden.</span>&#x000A;<span class="c1">--</span>&#x000A;<span class="c1">-- ==== Hidden Examples Subheader</span>&#x000A;<span class="c1">-- This content will also be hidden when `Examples` is collapsed.</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/References/1'>
+References
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_References/Entry/Named Documentation Chunks/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Named Documentation Chunks</p>
+</div>
+<div class='notes'><p>Relocate a markup chunk by name.</p>
+
+<p>Create a named chunk:</p>
+<pre class="highlight haskell"><span class="c1">-- $myNamedHaddockChunk</span>&#x000A;<span class="c1">-- This named chunk can include haddock markup like: `Control.Monad.State`</span></pre>
+<p>And include elsewhere by name:</p>
+<pre class="highlight haskell"><span class="c1">-- $myNamedHaddockChunk</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_References/Entry/Anchors/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Anchors</p>
+</div>
+<div class='notes'><p>Link to a named anchors across modules.</p>
+
+<p>Create a label in module A:</p>
+<pre class="highlight haskell"><span class="c1">-- #myLabel#</span></pre>
+<p>And link to it in module B:</p>
+<pre class="highlight haskell"><span class="c1">-- A link to A#myLabel</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Code Blocks/1'>
+Code Blocks
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Code Blocks/Entry/Syntax Highlighted Code Blocks/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Syntax Highlighted Code Blocks</p>
+</div>
+<div class='notes'><p>Code lines and blocks are supported.</p>
+
+<p>Create a code block:</p>
+<pre class="highlight haskell"><span class="c1">-- @</span>&#x000A;<span class="c1">--   fibs = 0 : 1 : zipWith (+) fibs (tail fibs)</span>&#x000A;<span class="c1">-- @</span></pre>
+<p>Create a code line:</p>
+<pre class="highlight haskell"><span class="c1">-- &gt; fibs = 0 : 1 : zipWith (+) fibs (tail fibs)</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/REPL Examples/1'>
+REPL Examples
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_REPL Examples/Entry/Evaluated Output Examples/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Evaluated Output Examples</p>
+</div>
+<div class='notes'><p>An input line of code followed by it&#39;s evaluated output.</p>
+
+<p>These examples can be verified with doctest.</p>
+<pre class="highlight haskell"><span class="c1">-- &gt;&gt;&gt; fibs !! 3</span>&#x000A;<span class="c1">-- 2</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Properties/1'>
+Properties
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Properties/Entry/Testable Properties/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Testable Properties</p>
+</div>
+<div class='notes'><p>A property contains a quickcheck-testable declaration.</p>
+
+<p>These properties can be tested with doctest.</p>
+<pre class="highlight haskell"><span class="c1">-- Idempotence:</span>&#x000A;<span class="c1">--</span>&#x000A;<span class="c1">-- prop&gt; sort xs == ( sort . sort ) (xs :: [Int])</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Hyperlinking/1'>
+Hyperlinking
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Hyperlinking/Entry/Module, Function, and Type Hyperlinks/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Module, Function, and Type Hyperlinks</p>
+</div>
+<div class='notes'><p>Locatable modules, types and functions can be hyperlinked.</p>
+<pre class="highlight haskell"><span class="c1">-- Local hyperlinks: "My.Module", 'MyType', 'mkMyType'</span>&#x000A;<span class="c1">-- Unqualified hyperlinks: "Prelude", 'Int', 'sort'</span>&#x000A;<span class="c1">-- Fully-qualified hyperlinks: "Data.Tree", 'Data.Tree.Tree', 'Data.Containers.ListUtils.nubOrd'</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Text Markup/1'>
+Text Markup
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Text Markup/Entry/Emphasis/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Emphasis</p>
+</div>
+<div class='notes'><p>Add emphasis to text:</p>
+<pre class="highlight haskell"><span class="c1">-- Some /emphasized text/</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Text Markup/Entry/Bolding/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Bolding</p>
+</div>
+<div class='notes'><p>Make text bold:</p>
+<pre class="highlight haskell"><span class="c1">-- Some __bolded text__</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Text Markup/Entry/Monospacing/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Monospacing</p>
+</div>
+<div class='notes'><p>Make text monospaced:</p>
+<pre class="highlight haskell"><span class="c1">-- Some @monospace text@</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/External References/1'>
+External References
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_External References/Entry/Links/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Links</p>
+</div>
+<div class='notes'><p>Create hyperlink anchors to external resources:</p>
+<pre class="highlight haskell"><span class="c1">-- A raw url &lt;http://example.com&gt;</span>&#x000A;<span class="c1">-- A local file url &lt;file:///Users/myname/.ghci&gt;</span></pre>
+<p>Hyperlinks with alternative link text:</p>
+<pre class="highlight haskell"><span class="c1">-- A [renamed link](http://example.com)</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_External References/Entry/Images/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Images</p>
+</div>
+<div class='notes'><p>Embed external images:</p>
+<pre class="highlight haskell"><span class="c1">-- ![some description text](imagepath.png)</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Lists/1'>
+Lists
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Lists/Entry/Unordered Lists/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Unordered Lists</p>
+</div>
+<div class='notes'><p>Create unordered lists with <code>*</code> and <code>-</code>:</p>
+<pre class="highlight haskell"><span class="c1">-- * first list item</span>&#x000A;<span class="c1">-- * second list item</span></pre><pre class="highlight haskell"><span class="c1">-- - first list item</span>&#x000A;<span class="c1">-- - second list item</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Lists/Entry/Ordered Lists/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Ordered Lists</p>
+</div>
+<div class='notes'><p>Order lists with <code>(n)</code> or <code>n.</code>:</p>
+<pre class="highlight haskell"><span class="c1">-- (1) first numbered list item</span>&#x000A;<span class="c1">-- (2) second numbered list item</span></pre><pre class="highlight haskell"><span class="c1">-- 1. first numbered list item</span>&#x000A;<span class="c1">-- 2. second numbered list item</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Lists/Entry/Definition Lists/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Definition Lists</p>
+</div>
+<div class='notes'><p>Create definition lists with <code>[]</code> syntax:</p>
+<pre class="highlight haskell"><span class="c1">-- [thingone] thingone value</span>&#x000A;<span class="c1">-- [@thingtwo@] thingtwo value</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Lists/Entry/Advanced Nesting of Lists/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Advanced Nesting of Lists</p>
+</div>
+<div class='notes'><p>Haddock supports advanced nesting of lists:</p>
+<pre class="highlight haskell"><span class="cm">{-|&#x000A;* Beginning of list&#x000A;This belongs to the list above!&#x000A;&#x000A;    &gt; nested&#x000A;    &gt; bird&#x000A;    &gt; tracks&#x000A;&#x000A;    * Next list&#x000A;    More of the indented list.&#x000A;&#x000A;        * Deeper&#x000A;&#x000A;            @&#x000A;            even code blocks work&#x000A;            @&#x000A;&#x000A;            * Deeper&#x000A;&#x000A;                    1. Even deeper!&#x000A;                    2. No newline separation even in indented lists.&#x000A;-}</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Custom Math and LaTeX/1'>
+Custom Math and LaTeX
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Custom Math and LaTeX/Entry/LaTeX with MathJax/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>LaTeX with MathJax</p>
+</div>
+<div class='notes'><p>Multi-line LaTeX markup via <code>\[...\]</code>:</p>
+<pre class="highlight haskell"><span class="c1">-- \[</span>&#x000A;<span class="c1">--    f(a) = \frac{1}{2\pi i}\oint_\gamma \frac{f(z)}{z-a}\,\mathrm{d}z</span>&#x000A;<span class="c1">-- \]</span></pre>
+<p>Inline LaTeX markup via <code>\(...\)</code>:</p>
+<pre class="highlight haskell"><span class="c1">-- A simple inline example: \(sum_{n=1}^{\infty} 2^{-n} = 1\)</span></pre>
+<p>If the output format supports it, mathematics notation will be rendered within the document, e.g. via MathJax within HTML.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Metadata/1'>
+Metadata
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Metadata/Entry/Since/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Since</p>
+</div>
+<div class='notes'><p>Recent haddock version support the <code>since</code> metadata tag for documenting the version in which a documentable entity was introduced.</p>
+<pre class="highlight haskell"><span class="c1">-- @since 3.14.42</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Grids and Tables/1'>
+Grids and Tables
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Grids and Tables/Entry/Layout/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Layout</p>
+</div>
+<div class='notes'><p>Tables supporting internal markup rendering:</p>
+<pre class="highlight haskell"><span class="cm">{- &#x000A;&#x000A;+------------------------+------------+----------+----------+&#x000A;| Header row, column 1   | Header 2   | Header 3 | Header 4 |&#x000A;| (header rows optional) |            |          |          |&#x000A;+========================+============+==========+==========+&#x000A;| body row 1, column 1   | column 2   | column 3 | column 4 |&#x000A;+------------------------+------------+----------+----------+&#x000A;| body row 2             | Cells may span columns.          |&#x000A;+------------------------+------------+---------------------+&#x000A;| body row 3             | Cells may  | \[                  |&#x000A;+------------------------+ span rows. | f(n) = \sum_{i=1}   |&#x000A;| body row 4             |            | \]                  |&#x000A;+------------------------+------------+---------------------+&#x000A;&#x000A;-}</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Configuration/1'>
+Configuration
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Configuration/Entry/Local Haddock Options/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Local Haddock Options</p>
+</div>
+<div class='notes'><p>Module-wide attributes can control haddocks layout and mangling.</p>
+
+<p>Hide a module from haddock:</p>
+<pre class="highlight haskell"><span class="cp">{-# OPTIONS_HADDOCK hide #-}</span></pre>
+<p>Omit undocumented definitions:</p>
+<pre class="highlight haskell"><span class="cp">{-# OPTIONS_HADDOCK prune #-}</span></pre>
+<p>Ignore the explicit export list and document all top-level entities:</p>
+<pre class="highlight haskell"><span class="cp">{-# OPTIONS_HADDOCK ignore-exports #-}</span></pre>
+<p>Do not treat the module as the &quot;home&quot; of the entities it exports:</p>
+<pre class="highlight haskell"><span class="cp">{-# OPTIONS_HADDOCK not-home #-}</span></pre>
+<p>Show all language extensions:</p>
+<pre class="highlight haskell"><span class="cp">{-# OPTIONS_HADDOCK show-extensions #-}</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='notes'>
+<h2>Notes</h2>
+<p>Much of this content is ported from the official <a href="https://github.com/haskell/haddock">haddock</a> <a href="https://github.com/haskell/haddock/blob/ghc-8.6/doc/cheatsheet/haddocks.md">cheatsheet</a></p>
+
+</section>
+</article>
+<footer>
+Generated with <a onclick="window.dash.openExternal_(this.href); return false;" href='https://github.com/Kapeli/cheatset#readme'>cheatset</a>
+</footer>
+</body>
+</html>
